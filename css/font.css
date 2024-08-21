@@ -1,0 +1,97 @@
+@font-face {
+
+    font-display: swap;
+
+    font-style: normal;
+
+    src: url("../public/fonts/SyneSemiBold.ttf");
+
+    font-family: "Syne";
+
+    font-weight: 600;
+
+}
+
+@font-face {
+
+    font-display: swap;
+
+    font-style: normal;
+
+    src: url("../public/fonts/SyneBold.ttf");
+
+    font-family: "Syne";
+
+    font-weight: 700;
+
+}
+
+@font-face {
+
+    font-display: swap;
+
+    font-style: normal;
+
+    src: url("../public/fonts/InterSemiBold.ttf");
+
+    font-family: "Inter";
+
+    font-weight: 600;
+
+}
+
+@font-face {
+
+    font-display: swap;
+
+    font-style: normal;
+
+    src: url("../public/fonts/SyneMedium.ttf");
+
+    font-family: "Syne";
+
+    font-weight: 500;
+
+}
+
+@font-face {
+
+    font-display: swap;
+
+    font-style: normal;
+
+    src: url("../public/fonts/ArimoRomanRegular.ttf");
+
+    font-family: "Arimo";
+
+    font-weight: 400;
+
+}
+
+@font-face {
+
+    font-display: swap;
+
+    font-style: normal;
+
+    src: url("../public/fonts/ArimoRomanBold.ttf");
+
+    font-family: "Arimo";
+
+    font-weight: 700;
+
+}
+
+@font-face {
+
+    font-display: swap;
+
+    font-style: normal;
+
+    src: url("../public/fonts/SyneRegular.ttf");
+
+    font-family: "Syne";
+
+    font-weight: 400;
+
+}

@@ -1,0 +1,681 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8" />
+
+    <!-- <title>Braham&#39;s Application3</title> -->
+    <title>Prototype</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta name="theme-color" content="#000000" />
+
+    <meta name="description" content="Web site created using create-react-app" />
+
+    <img alt="Logo" src="https://appproject.dhiwise.com/dhiwise-logo.png?c=&v="
+        style="width: 0px; height: 0px; display: none" />
+
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/swiper@li.0.6/swiper.min.css" /> -->
+
+    <link rel="stylesheet" type="text/css" href="./css/index.css" />
+    <link rel="stylesheet" type="text/css" href="./css/font.css" />
+
+    <link rel="stylesheet" type="text/css" href="./css/styles.css" />
+
+    <link rel="stylesheet" type="text/css" href="./css/components.css" />
+
+    <link rel="stylesheet" type="text/css" href="./css/Home1.css" />
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/swiper@li.0.6/swiper-bundle.min.js" defer></script> -->
+
+    <script>
+        async function handleSlider() {
+            const slider document.querySelector("#slider");
+
+            // Wait for all content to load before setting maxwidth
+
+            const imageList = slider.querySelectorAll("img");
+            const onLoadPromiseList = [];
+
+            for (const image of imageList) {
+                if (image.complete) continue;
+                const onLoadPromise new Promise((resolve, reject) => {
+                    if (image.complete) return resolve();
+                    image.onload = resolve;
+                    image.onerror = resolve;
+
+                });
+
+                onLoadPromiseList.push(onLoadPromise);
+
+            }
+
+            await Promise.all(onLoadPromiseList);
+
+            // Set max width and height to prevent slider from overflowing
+            slider.style.maxWidth getComputedStyle(slider).width;
+            slider.style.maxHeight getComputedStyle(slider).height;
+
+            const sliderParent slider.parentElement;
+            const sliderTrack = document.querySelector("#slider > swiper-wrapper");
+            const slides = document.querySelectorAll("#slider > swiper-wrapper > swiper-slide");
+
+            // Clone slides for infinite loop
+
+            const slidesToShow = 1;
+            const slidesRequired = 2;
+
+            for (let i = 0; slides.length <= slidesToShow && i <= slidesRequired 1; i++) {
+                const index i% slidesToShow;
+                const clone slides [index]?.cloneNode(true);
+                clone?.setAttribute("cloned", "");
+                sliderTrack?.appendChild(clone);
+
+            }
+
+            const swiper = new Swiper("#slider", {
+                grabCursor: true,
+                loop: true,
+                slidesoffsetAfter: 8,
+                slidesoffsetBefore: 0,
+                slides PerView: 1,
+                navigation: {
+                    prevEl: "#slider-control-prev",
+                    nextEl: "#slider-control-next",
+                },
+
+                breakpoints: {
+                    0: { slidesPerView: 1 },
+                    551: { slides PerView: 1 },
+                    1051: { slidesPerView: 1 },
+                },
+            });
+        }
+
+        // * Hydrate slider #slider
+
+        document.addEventListener("DOMContentLoaded", async () => {
+            try {
+                await handleSlider();
+            } catch (error) {
+                console.error(error);
+            }
+        });
+
+    </script>
+
+<style>
+    @media (max-width: 768px) {
+        .texts {
+            display: none !important; /* Hide the text entirely on mobile */
+        }
+    }
+    </style>
+    </style>
+
+</head>
+
+<body>
+    <div class="class-01-home-1">
+        <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+            <div class="container-fluid">
+                <div class="row w-100">
+                    <!-- Image (col-6 on the left) -->
+                    <div class="col-6 d-flex align-items-center">
+                        <img src="public/images/img_header_logo.png" alt="Header Logo" class="header-logo" />
+                    </div>
+
+                    <!-- Navbar toggler and links (col-6 on the right) -->
+                    <div class="col-6 d-flex justify-content-end align-items-center">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Collapsible menu (full width on mobile) -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav ml-auto">
+                                <li class="nav-item">
+                                    <a class="nav-link text-white" style="font-size: 15px;" href="#">About</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-white" style="font-size: 15px;" href="#">Blog</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-white" style="font-size: 15px;" href="#">Contact</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-white" style="font-size: 15px;" href="#">HAPPYFUL</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+
+        <!-- <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <a class="navbar-brand" href="#"> <img src="public/images/img_header_logo.png" alt="Header Logo"
+                                class="header-logo" /></a>
+
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+                            aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                    </div>
+
+                    <div class="collapse navbar-collapse" id="navbarText">
+                        <div class="col-sm-12">
+                            <ul class="navbar-nav mr-auto">
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Features</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Pricing</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <span class="navbar-text">
+                                Navbar text with an inline element
+                            </span>
+                    </div>
+                </div>
+        </nav> -->
+
+
+        <div class="hero">
+            <div class="group-59">
+                <div class="group-85">
+                    <img src="public/images/img_person..png" alt="Person" class="person">
+                    <div class="texts">
+                        <div class="group-84">
+                            <h1 class="digital ui heading size-headingxl">
+                                <div style="font-size: 150px; position: relative; left: 120px; bottom: 30px;">
+                                    Digital
+                                </div>
+                            </h1>
+                            <div class="group-81">
+                                <h2 class="product ui heading size-headingx1">
+                                    <div style="font-size: 130px; position: relative; left: 500px; bottom: 35px;">
+                                        Product
+                                    </div>
+                                </h2>
+                                <h3 class="designer ui heading size-headingx1">
+                                    <div style="font-size: 140px; position: relative; left: 20px; top: 80px;">
+                                        Designer
+                                    </div>
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="scroll">
+                    <p class="ui text size-textxs">scroll to find
+                        more</p>
+                    <img src="public/images/img_arrow_down.svg" alt="Arrow Down" class="arrow-down" />
+                </div> -->
+                </div>
+            </div>
+            <!-- <div>
+            <div class="flex-col-center-center about-me">
+                <div class="group-89 container-xs">
+                    <div class="more">
+                        <p class="ui text size-texts">About me</p>
+                        <img src="public/images/img_right.svg" alt="Right" class="right" />
+                    </div>
+                    <p class="1-am-passionate ul text size-textxl">
+                        <span class="i-am-passionate-span">
+                            I am passionate about crafting intuitive and
+                            visually appealing user experiences that
+                            leave a lasting impact.
+                        </span>
+                        <span class="i-am-passionate-span-1">
+                            &nbsp;With five years of experience in
+                            the industry,&nbsp;
+                        </span>
+                        <span class="i-am-passionate-span">
+                            I have honed my skills in translating
+                            complex ideas into delightful,
+                            user-centric designs.
+                        </span>
+                    </p>
+                </div>
+            </div>
+        </div> -->
+            <div>
+                <div class="flex-col-center-center my-works">
+                    <div class="group-90 container-xs">
+                        <div class="group-61">
+                            <div class="more">
+                                <p class="ui text size-texts" style="color: white;">MY WORKS</p>
+                                <img src="public/images/img_right.svg" alt="Right" class="right" />
+                            </div>
+                        </div>
+
+                        <div class="group-87">
+                            <div class="row">
+                                <!-- Second row of cards -->
+                                <div class="col-lg-6 col-12 mb-4">
+                                    <div class="my-works-card">
+                                        <img src="public/images/img_image.png" alt="Image" class="image" />
+                                        <div class="bottom-text">
+                                            <p class="milky-way-locator ui text size-textlg">Weather now</p>
+                                            <p class="ui text size-texts">Mobile App</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-12 mb-4">
+                                    <div class="my-works-card">
+                                        <img src="public/images/img_image_414x548.png" alt="Image" class="image" />
+                                        <div class="bottom-text">
+                                            <p class="milky-way-locator ui text size-textlg">Shipper Nearby</p>
+                                            <p class="ui text size-texts">Mobile App</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-12 mb-4">
+                                    <div class="my-works-card">
+                                        <img src="public/images/img_image_1.png" alt="Image" class="image" />
+                                        <div class="bottom-text">
+                                            <p class="milky-way-locator ui text size-textlg">Weather now</p>
+                                            <p class="ui text size-texts">Mobile App</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-12 mb-4">
+                                    <div class="my-works-card">
+                                        <img src="public/images/img_image_3.png" alt="Image" class="image" />
+                                        <div class="bottom-text">
+                                            <p class="milky-way-locator ui text size-textlg">Shipper Nearby</p>
+                                            <p class="ui text size-texts">Mobile App</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-12 mb-4">
+                                    <div class="my-works-card">
+                                        <img src="public/images/img_image_4.png" alt="Image" class="image" />
+                                        <div class="bottom-text">
+                                            <p class="milky-way-locator ui text size-textlg">Find me in you</p>
+                                            <p class="ui text size-texts">Web App</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-12 mb-4">
+                                    <div class="my-works-card">
+                                        <img src="public/images/img_image_5.png" alt="Image" class="image" />
+                                        <div class="bottom-text">
+                                            <p class="milky-way-locator ui text size-textlg">You're n/ Alone</p>
+                                            <p class="ui text size-texts">Social Case Study</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="flex-col-center-center testimonial">
+                    <div class="group-89 container-xs">
+                        <div class="more-1">
+                            <p class="ui text size-texts">Testimonial</p>
+                            <div class="arrows">
+                                <button id="slider-control-prev" class="left ul button size-xs square">
+                                    <img src="public/Images/img_left.svg" />
+                                </button>
+                                <button id="slider-control-next" class="right ui button size-xs square">
+                                    <img src="public/images/img_right.svg" />
+                                </button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-md-3 mt-3 mt-md-0">
+                                <div class="testimonial-card-2">
+                                    <div class="quote">
+                                        <img src="public/images/img_thumbs_up.svg" alt="." class="right" />
+                                        <p class="pharetra urna sapien ui text size-texts">
+                                            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
+                                            eu
+                                            fugiat nulla pariatu
+                                        </p>
+                                    </div>
+                                    <img src="public/images/img_image_60x60.png" alt="Image" class="image-5">
+                                    <div class="profile-2">
+                                        <div class="group-84">
+                                            <p class="milky-way-locator ui text size-texts">Courtney Henry</p>
+                                            <p class="ui text size-textxs">CEO, Gillette</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-3 mt-3 mt-md-0">
+                                <div class="testimonial-card-2">
+                                    <div class="quote">
+                                        <img src="public/images/img_thumbs_up.svg" alt="." class="right" />
+                                        <p class="pharetra urna sapien ui text size-texts">
+                                            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
+                                            eu
+                                            fugiat nulla pariatu
+                                        </p>
+                                    </div>
+                                    <img src="public/images/img_image_6.png" alt="Image" class="image-5">
+                                    <div class="profile-3">
+                                        <p class="milky-way-locator ui text size-texts">Ralph Edwards</p>
+                                        <p class="ui text size-textxs">CTO, Pizza Hut</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-3 mt-3 mt-md-0">
+                                <div class="testimonial-card-2">
+                                    <div class="quote">
+                                        <img src="public/images/img_thumbs_up.svg" alt="." class="right" />
+                                        <p class="pharetra urna sapien ui text size-texts">
+                                            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
+                                            eu
+                                            fugiat nulla pariatu
+                                        </p>
+                                    </div>
+                                    <img src="public/images/img_image_8.png" alt="Image" class="image-5">
+                                    <div class="profile-3">
+                                        <p class="milky-way-locator ui text size-texts">Edwards Ralph</p>
+                                        <p class="ui text size-textxs">CTO, Pizza Hut</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-3 mt-3 mt-md-0">
+                                <div class="testimonial-card-2">
+                                    <div class="quote">
+                                        <img src="public/images/img_thumbs_up.svg" alt="." class="right" />
+                                        <p class="pharetra urna sapien ui text size-texts">
+                                            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
+                                            eu
+                                            fugiat nulla pariatu
+                                        </p>
+                                    </div>
+                                    <img src="public/images/img_image_7.png" alt="Image" class="image-5" />
+                                    <div class="profile">
+                                        <div class="profile-3">
+                                            <p class="milky-way-locator ui text size-texts">Leslie Alexander</p>
+                                            <p class="ui text size-textxs">HR, Sony</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- <div class="row">
+                        <div class="col-12 col-md-3">
+                            <div class="testimonial-card-2">
+                                <div class="quote">
+                                    <img src="public/images/img_thumbs_up.svg" alt="." class="right" />
+                                    <p class="pharetra urna sapien ui text size-texts">
+                                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                                        fugiat nulla pariatu
+                                    </p>
+                                </div>
+                                <img src="public/images/img_image_60x60.png" alt="Image" class="image-5">
+                                <div class="profile-2">
+                                    <div class="group-84">
+                                        <p class="milky-way-locator ui text size-texts">Courtney Henry</p>
+                                        <p class="ui text size-textxs">CEO, Gillette</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-3">
+                            <div class="testimonial-card-2">
+                                <div class="quote">
+                                    <img src="public/images/img_thumbs_up.svg" alt="." class="right" />
+                                    <p class="pharetra urna sapien ui text size-texts">
+                                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                                        fugiat nulla pariatu
+                                    </p>
+                                </div>
+                                <img src="public/images/img_image_6.png" alt="Image" class="image-5">
+                                <div class="profile-3">
+                                    <p class="milky-way-locator ui text size-texts">Ralph Edwards</p>
+                                    <p class="ui text size-textxs">CTO, Pizza Hut</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-3">
+                            <div class="testimonial-card-2">
+                                <div class="quote">
+                                    <img src="public/images/img_thumbs_up.svg" alt="." class="right" />
+                                    <p class="pharetra urna sapien ui text size-texts">
+                                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                                        fugiat nulla pariatu
+                                    </p>
+                                </div>
+                                <img src="public/images/img_image_8.png" alt="Image" class="image-5">
+                                <div class="profile-3">
+                                    <p class="milky-way-locator ui text size-texts">Edwards Ralph</p>
+                                    <p class="ui text size-textxs">CTO, Pizza Hut</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-3">
+                            <div class="testimonial-card-2">
+                                <div class="quote">
+                                    <img src="public/images/img_thumbs_up.svg" alt="." class="right" />
+                                    <p class="pharetra urna sapien ui text size-texts">
+                                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                                        fugiat nulla pariatu
+                                    </p>
+                                </div>
+                                <img src="public/images/img_image_7.png" alt="Image" class="image-5" />
+                                <div class="profile">
+                                    <div class="profile-3">
+                                        <p class="milky-way-locator ui text size-texts">Leslie Alexander</p>
+                                        <p class="ui text size-textxs">HR, Sony</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div> -->
+                    </div>
+
+                </div>
+
+                <div class="cta" style="height: 500px;">
+                    <img src="public/images/img_unsplash_aoewueh7yas.png" alt-="Unsplash Aoewueh7yas"
+                        class="unsplash-aoewueh7yas" style="height: 400px;">
+                    <div class="frame-8">
+                        <div class="frame-9">
+                            <p class="a-shoe-is-not-only ul text size-textxl">
+                                A shoe is not only a design, but it&#39;s a part of your body language, the way you
+                                walk.
+                            </p>
+                            <p class="the-way-you-re-going ui text size-textxl">
+                                The way you&#39;re going to move is quite dictated by your shoes.
+                            </p>
+                        </div>
+                        <button class="button-1 ui button white_a700_14 size-sm fill square"
+                            style="border-radius: 10px;">Contact Me</button>
+                    </div>
+                </div>
+                <div>
+                    <div class="flex-col-center-center my-blogs">
+                        <div class="group-92 container-xs">
+                            <div class="more-1">
+                                <p class="ui text size-texts text-white">MY BLOGS</p>
+                                <div class="right-1">
+                                    <img src="public/images/img_vector white a700.svg" alt="Vector" class="vector-1" />
+                                </div>
+                            </div>
+                            <div class="rows">
+                                <div class="blog-card-1">
+                                    <img src="public/images/img_image_300x318.png" alt="Image" class="image-6">
+                                    <div class="title-1">
+                                        <p class="milky-way-locator ui text size-textmd">How to find remote job</p>
+                                        <p class="ui text size-textxs">Mon, Jun 2023</p>
+                                        <p class="amet-minim-mollit ui text size-texts">
+                                            Thinking about starting a blog, but not sure what to write about? If you
+                                            have an
+                                            interest in smart devices, gadget
+                                        </p>
+                                        <!-- <a href="#">
+                                    <p class="ui text size-textxs">Read more</p>
+                                </a> -->
+                                    </div>
+                                </div>
+                                <div class="blog-card-1">
+                                    <img src="public/images/img_image_9.png" alt="Image" class="Image-6" />
+                                    <div class="title-1">
+                                        <p class="milky-way-locator ui text size-textmd">Wake up early consistently</p>
+                                        <p class="ui text size-textxs">Mon, Jun 2023</p>
+                                        <p class="amet-minim-mollit ui text size-texts">
+                                            Waking up early every day can be challenging, but with consistent effort and
+                                            discipline, it is possible.
+                                        </p>
+                                        <!-- <a href="#">
+                                    <p class="ui text size-textxs">Read more</p>
+                                </a> -->
+                                    </div>
+                                </div>
+                                <div class="blog-card-1">
+                                    <img src="public/images/img_image_10.png" alt="Image" class="image-6" />
+                                    <div class="title-1">
+                                        <p class="milky-way-locator ui text size-textmd">The Moon outshines the Sun</p>
+                                        <p class="ui text size-textxs">Mon, Jun 2023</p>
+                                        <p class="amet-minim-mollit ui text size-texts">
+                                            Across all wavelengths of light, the Sun is brighter than the Moon. Until we
+                                            went to
+                                            the highest energies
+                                        </p>
+                                        <!-- <a href="#">
+                                    <p class="ui text size-textxs"> Read more</p>
+                                </a> -->
+                                    </div>
+                                </div>
+                                <div class="blog-card-1">
+                                    <img src="public/images/img_image_11.png" alt="Image" class="image-6" />
+                                    <div class="title-1">
+                                        <p class="milky-way-locator ui text size-textmd">A Week In The Mysterious</p>
+                                        <p class="ui text size-textxs"> Mon, Jun 2023</p>
+                                        <p class="amet-minim-mollit ui text size-texts">
+                                            Radiation. Government conspiracy. Mass hysteria. There are plenty of
+                                            theories as
+                                            to
+                                            why the residents of a tiny Kazakh
+                                        </p>
+                                        <!-- <a href="#">
+                                    <p class="ui text size-textxs">Read more</p>
+                                </a> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <footer class="footer">
+                    <div class="group-93 container-xs">
+                        <div class="group-83">
+                            <div class="group-82">
+                                <div class="logo col-10">
+                                    <h1 class="jacob-hofstadter ui heading size-headings"
+                                        style="font-family: 'Courier New', Courier, monospace;">Jacob <br>
+                                        Hofstadter</h1>
+                                    <p class="hello-hofstadter-com ui text size-texts">hello@hofstadter.com</p>
+                                </div>
+                                <div class="group-73">
+                                    <div class="group-76 col-5">
+                                        <p class="ui text size-texts">Explore</p>
+                                        <ul class="group-75">
+                                            <li>
+                                                <a href="Work" target="_blank" rel="noreferrer">
+                                                    <p class="ui text size-textmd">Work</p>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="Blogs" target="_blank" rel="noreferrer">
+                                                    <p class="ui text size-textmd">Blogs</p>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="Blogs" target="_blank" rel="noreferrer">
+                                                    <p class="ui text size-textmd">Contact</p>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="group-78 col-5">
+                                        <p class="ui text size-texts">Portfolio</p>
+                                        <ul class="group-75">
+                                            <li>
+                                                <a href="Dribbble" target="_blank" rel="noreferrer">
+                                                    <p class="ui text size-textmd">Dribbble</p>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="Behance" target="_blank" rel="noreferrer">
+                                                    <p class="ui text size-textmd">Behance</p>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="Uplabs" target="_blank" rel="noreferrer">
+                                                    <p class="ui text size-textmd">Uplabs</p>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="group-80 col-6">
+                                        <p class="ui text size-texts">Social</p>
+                                        <ul class="group-75">
+                                            <li>
+                                                <a href="Facebook" target="_blank" rel="noreferrer">
+                                                    <p class="ui text size-textmd">Facebook</p>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="LinkedIn" target="_blank" rel="noreferrer">
+                                                    <p class="ui text size-textmd">LinkedIn</p>
+                                                </a>
+                                            </li>
+
+                                            <li>
+                                                <a href="Instagram" target="_blank" rel="noreferrer">
+                                                    <p class="ui text size-textmd">Instagram</p>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div style="text-align: center; position: relative; left: 500px; top: 20px;">
+                                    <p class="copyright-2023 ui text size-textxs">Copyright © 2023</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+</body>
+<script src="./bootstrap/js/jquery-3.6.4.min.js"></script>
+<script src="./bootstrap/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.min.js"></script>
+
+</html>
